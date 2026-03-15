@@ -11,17 +11,27 @@ public class DeckStore {
 
     public static boolean isUnique(String name) {
         loadDecks();
-        return !deckNames.contains(name.trim());
+        return !deckNames.contains(name.trim().toLowerCase());
     }
 
-    public static void addDeck(Deck deck) {
+    public static boolean addDeck(Deck deck) {
+        loadDecks();
+        String name = deck.getName().trim();
+        if(deckNames.contains(name))
+        {
+            return false; //duplicate
+        }
+
         deckNames.add(deck.getName().trim());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             String line = escapeCsv(deck.getName().trim()) + "," + escapeCsv(deck.getDescription() == null ? "" : deck.getDescription().trim());
             writer.write(line);
             writer.newLine();
+
+            return  true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -34,7 +44,7 @@ public class DeckStore {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",", 2);
                 if (parts.length > 0) {
-                    deckNames.add(parts[0].trim());
+                    deckNames.add(parts[0].trim().toLowerCase());
                 }
             }
         } catch (IOException e) {
