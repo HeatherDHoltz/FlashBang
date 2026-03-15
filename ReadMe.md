@@ -1,4 +1,4 @@
-# Name of application: 
+# Name of application: FlashBang
 # Version: 0.2
 
 # who did what:
