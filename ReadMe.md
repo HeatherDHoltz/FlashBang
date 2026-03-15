@@ -4,8 +4,7 @@
 # who did what:
 1. 
 2. 
-3. 
-3. 
+3. Brian Brooks-homePage.fxml and HomePageController
 
 
 # Any other instruction that users need to know:
