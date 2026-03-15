@@ -23,7 +23,7 @@
         </ImageView>
 
         <!--Button for create deck-->
-        <VBox spacing="20" alignment="CENTER">
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 40;">
 
             <children>
 
