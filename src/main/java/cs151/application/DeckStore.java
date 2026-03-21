@@ -7,16 +7,30 @@ import java.util.List;
 import java.util.Set;
 import cs151.application.Deck;
 
+/**
+ *Handles storing a retrieving of deck objects from a csv file
+ */
 public class DeckStore
 {
+    //File name used to store deck data
     private static final String FILE_NAME = "decks.csv";
+    //Stroes exisitng dek names for uniqueness
     private static Set<String> deckNames = new HashSet<>();
 
+    /**
+     * Check if deck name isuniwque
+     * @param name the deck name to check
+     * @return true if name is not used, false otehrwise
+     */
     public static boolean isUnique(String name) {
         loadDecks();
         return !deckNames.contains(name.trim());
     }
 
+    /**
+     * Adds a new deck to the storage file
+     * @param deck the Deck object to be stored
+     */
     public static void addDeck(Deck deck) {
         deckNames.add(deck.getName().trim());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
@@ -28,6 +42,10 @@ public class DeckStore
         }
     }
 
+    /**
+     * Loads the deck names from file into memory
+     * Also used to check duplicate names
+     */
     public static void loadDecks() {
         deckNames.clear();
         File file = new File(FILE_NAME);
@@ -45,6 +63,11 @@ public class DeckStore
         }
     }
 
+    /**
+     * Escapes special characters for CSV formatting
+     * @param value string to be formatted
+     * @return a properly esaped CSV string
+     */
     private static String escapeCsv(String value)
     {
         if (value.contains(",") || value.contains("\"") || value.contains("\n")) {
@@ -54,6 +77,10 @@ public class DeckStore
         return value;
     }
 
+    /**
+     * Retrieves all the stored deck from csv file
+     * @return a list of Deck Objects
+     */
     public static List<Deck> getAllDecks()
     {
         List<Deck> decks = new ArrayList<>();

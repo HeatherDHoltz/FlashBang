@@ -17,18 +17,27 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
+/**
+ * Controller for list deck pages
+ * Displays all stored decks in a table view, sorted alphabetically by the deck anme
+ * allows navigation back to home page
+ */
 public class ListDeckController
 {
+    //Tab;le that displays all decks
     @FXML
     private TableView<Deck> deckTable;
-
+//Column for deck names
     @FXML
     private TableColumn<Deck,String> nameColumn;
-
+//Column for deck descitpion
     @FXML
     private TableColumn<Deck, String>desCol;
 
+    /**
+     * Naviagtes back to home page
+     * @param event home bnutton clicked
+     */
     @FXML
     public void handleBack(ActionEvent event)
     {
@@ -47,6 +56,11 @@ public class ListDeckController
         }
     }
 
+    /**
+     * Initialized table at page load
+     * Binds tbale co.lumns to deck properties, Loads deck data
+     * Sorts deck alphabetically, dispays the decks in table
+     */
     @FXML
     public void initialize()
     {
