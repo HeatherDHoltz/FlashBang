@@ -1,4 +1,11 @@
 # Name of application: FlashBang
+# Version: 0.4
+
+# who did what:
+1. Heather Holtz-
+2. Phuc Vo-
+3. Brian Brooks-Initial review, Java Comments, updated ReadMe
+   
 # Version: 0.2
 
 # who did what:
