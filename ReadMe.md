@@ -3,7 +3,7 @@
 
 # who did what:
 1. Heather Holtz-
-2. Phuc Vo-
+2. Phuc Vo-Database,List decks page
 3. Brian Brooks-Initial review, Java Comments, updated ReadMe
    
 # Version: 0.2
