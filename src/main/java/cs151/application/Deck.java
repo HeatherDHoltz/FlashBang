@@ -18,7 +18,12 @@ public class Deck implements Serializable {
      * @param description deck description
      */
     public Deck(String name, String description) {
-        this.name = name;
+        if(name == null || name.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("Deck name cannot be empty");
+        }
+
+        this.name = name.trim();
         this.description = description;
     }
 
