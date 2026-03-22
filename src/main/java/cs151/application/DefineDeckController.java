@@ -80,4 +80,20 @@ public class DefineDeckController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Navigates back to the home page without saving the deck
+     * @param event buttom click event
+     */
+    @FXML
+    public void handleBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/cs151/application/homePage.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 700, 400));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

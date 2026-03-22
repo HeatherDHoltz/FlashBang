@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -19,8 +20,12 @@
         <TextField fx:id="deckNameField" promptText="Enter deck name" />
         <Label text="Description (optional):" />
         <TextArea fx:id="descriptionField" promptText="Enter description" prefRowCount="3" />
-        <Button text="Save Deck" onAction="#handleSaveDeck" style="-fx-background-color: #e58a2f; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
+        <HBox spacing="10" alignment="CENTER">
+            <children>
+                <Button text="Save Deck" onAction="#handleSaveDeck" style="-fx-background-color: #e58a2f; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                <Button text="Back" onAction="#handleBack" style="-fx-font-size: 14px;" />
+            </children>
+        </HBox>
     </children>
 
 </VBox>
-
