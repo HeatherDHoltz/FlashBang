@@ -1,19 +1,36 @@
 package cs151.application;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import cs151.application.Deck;
 
-public class DeckStore {
+/**
+ *Handles storing a retrieving of deck objects from a csv file
+ */
+public class DeckStore
+{
+    //File name used to store deck data
     private static final String FILE_NAME = "decks.csv";
+    //Stroes exisitng dek names for uniqueness
     private static Set<String> deckNames = new HashSet<>();
 
+    /**
+     * Check if deck name isuniwque
+     * @param name the deck name to check
+     * @return true if name is not used, false otehrwise
+     */
     public static boolean isUnique(String name) {
         loadDecks();
         return !deckNames.contains(name.trim());
     }
 
+    /**
+     * Adds a new deck to the storage file
+     * @param deck the Deck object to be stored
+     */
     public static void addDeck(Deck deck) {
         deckNames.add(deck.getName().trim());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
@@ -25,6 +42,10 @@ public class DeckStore {
         }
     }
 
+    /**
+     * Loads the deck names from file into memory
+     * Also used to check duplicate names
+     */
     public static void loadDecks() {
         deckNames.clear();
         File file = new File(FILE_NAME);
@@ -42,11 +63,65 @@ public class DeckStore {
         }
     }
 
-    private static String escapeCsv(String value) {
+    /**
+     * Escapes special characters for CSV formatting
+     * @param value string to be formatted
+     * @return a properly esaped CSV string
+     */
+    private static String escapeCsv(String value)
+    {
         if (value.contains(",") || value.contains("\"") || value.contains("\n")) {
             value = value.replace("\"", "\"\"");
             return '"' + value + '"';
         }
         return value;
     }
+
+    /**
+     * Retrieves all the stored deck from csv file
+     * @return a list of Deck Objects
+     */
+    public static List<Deck> getAllDecks()
+    {
+        List<Deck> decks = new ArrayList<>();
+
+        File file = new File(FILE_NAME);
+        if(!file.exists())
+        {
+            return decks;
+        }
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME)))
+        {
+            String line;
+            while ((line = reader.readLine()) != null)
+            {
+                String[] parts = line.split(",", 2);
+
+                String name = parts[0].trim();
+
+                String des;
+                if(parts.length > 1)
+                {
+                    des = parts[1].trim();
+                }
+
+                else
+                {
+                    des = "";
+                }
+
+                decks.add(new Deck(name, des));
+            }
+        }
+
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return decks;
+    }
+
+
 }
