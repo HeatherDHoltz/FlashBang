@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cs151.application.ListFlashcardsController"
+      spacing="10"
+      alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <children>
+
+        <TableView fx:id="table" prefWidth="600">
+
+            <columns>
+                <TableColumn fx:id="deckCol" text="Deck"/>
+                <TableColumn fx:id="frontCol" text="Front"/>
+                <TableColumn fx:id="backCol" text="Back"/>
+                <TableColumn fx:id="dateCol" text="Date"/>
+            </columns>
+
+        </TableView>
+
+        <Button text="Back" onAction="#handleBack"/>
+
+    </children>
+
+</VBox>
