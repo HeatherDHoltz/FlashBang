@@ -47,6 +47,14 @@
                                -fx-text-fill: white;
                                -fx-font-size: 16px;
                                -fx-font-weight: bold;" />
+
+
+                <Button text="Create Flashcard"
+                        onAction="#handleCreateFlashcard"/>
+
+                <Button text="View Flashcards"
+                        onAction="#handleViewFlashcards"/>
+
             </children>
 
         </VBox>
