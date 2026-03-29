@@ -4,7 +4,7 @@
 # who did what:
 1. Heather Holtz-final review, cleanup, final submission
 2. Phuc Vo-Flashcard and list flashcards logic
-3. Brian Brooks-Read me update, comment additions, initial review
+3. Brian Brooks-Read me update, comment additions, initial review,Updates to flashcard logic
    
 # Version: 0.4
 
