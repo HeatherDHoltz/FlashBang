@@ -1,4 +1,11 @@
 # Name of application: FlashBang
+# Version: 0.5
+
+# who did what:
+1. Heather Holtz-final review, cleanup, final submission
+2. Phuc Vo-Flashcard and list flashcards logic
+3. Brian Brooks-Read me update, comment additions, initial review
+   
 # Version: 0.4
 
 # who did what:
