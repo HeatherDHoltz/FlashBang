@@ -12,9 +12,11 @@ public class Flashcard
     private String frontText;
     private String backText;
     private LocalDateTime creationDate;
+    private FlashcardStatus status;
+    private LocalDateTime lastReviewDate;
 
     /**
-     * Constructor for flash card
+     * Constructor for new flash card
      * @param deckName name of the deck
      * @param frontText the question or pormpt
      * @param backText the answer
@@ -25,6 +27,10 @@ public class Flashcard
         this.frontText = frontText;
         this.backText = backText;
         this.creationDate = LocalDateTime.now();
+        this.status=FlashcardStatus.NEW;
+        this.lastReviewDate=null;
+
+
     }
 
     /**
@@ -33,13 +39,17 @@ public class Flashcard
      * @param frontText question or pormpt
      * @param backText the answer
      * @param creationDate the original creation date of the flashcard
+     * @param status flashcard status
+     * @param lastReviewDate last review date
      */
-    public Flashcard(String deckName, String frontText, String backText, LocalDateTime creationDate)
+    public Flashcard(String deckName, String frontText, String backText, LocalDateTime creationDate,FlashcardStatus status,LocalDateTime lastReviewDate)
     {
         this.deckName = deckName;
         this.frontText = frontText;
         this.backText = backText;
         this.creationDate = creationDate;
+        this.status=status;
+        this.lastReviewDate = lastReviewDate;
     }
 
     /**
@@ -69,4 +79,39 @@ public class Flashcard
      */
     public LocalDateTime getCreationDate()
     { return creationDate; }
+    /**
+     * Getter method for status
+     * @return the flashcard status
+     */
+    public FlashcardStatus getStatus()
+    {
+        return status;
+    }
+
+    /**
+     * Setter method for status
+     * @param status the new status
+     */
+    public void setStatus(FlashcardStatus status)
+    {
+        this.status = status;
+    }
+
+    /**
+     * Getter method for last review date
+     * @return the last review date
+     */
+    public LocalDateTime getLastReviewDate()
+    {
+        return lastReviewDate;
+    }
+
+    /**
+     * Setter method for last review date
+     * @param lastReviewDate the new last review date
+     */
+    public void setLastReviewDate(LocalDateTime lastReviewDate)
+    {
+        this.lastReviewDate = lastReviewDate;
+    }
 }

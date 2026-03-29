@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 /**
  * Controller for displaying a list of flashcards in a table
@@ -20,6 +21,8 @@ public class ListFlashcardsController {
     @FXML private TableColumn<Flashcard, String> frontCol;
     @FXML private TableColumn<Flashcard, String> backCol;
     @FXML private TableColumn<Flashcard, String> dateCol;
+    @FXML private TableColumn<Flashcard, String> statusCol;
+    @FXML private TableColumn<Flashcard, String> lastReviewCol;
 
     /**
      * Initializes tbale after FXML is loaded
@@ -38,6 +41,26 @@ public class ListFlashcardsController {
                     cellData.getValue().getCreationDate().format(formatter)
             );
         });
+        statusCol.setCellValueFactory(cellData ->
+        {
+            return new javafx.beans.property.SimpleStringProperty(
+                    cellData.getValue().getStatus().toString()
+            );
+        });
+
+        lastReviewCol.setCellValueFactory(cellData ->
+        {
+            LocalDateTime reviewDate = cellData.getValue().getLastReviewDate();
+
+            if (reviewDate == null)
+            {
+                return new javafx.beans.property.SimpleStringProperty("");
+            }
+
+            return new javafx.beans.property.SimpleStringProperty(
+                    reviewDate.format(formatter)
+            );
+        });
 
         table.getItems().addAll(FlashcardStore.getAllFlashcards());
     }
@@ -48,6 +71,27 @@ public class ListFlashcardsController {
      *
      * @param event the button click event
      */
+    @FXML
+    public void handleReview(ActionEvent event)
+    {
+        Flashcard selectedCard = table.getSelectionModel().getSelectedItem();
+
+        if (selectedCard == null)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select a flashcard first.");
+            alert.showAndWait();
+            return;
+        }
+
+        selectedCard.setLastReviewDate(LocalDateTime.now());
+        FlashcardStore.saveAllFlashcards(table.getItems());
+        table.refresh();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Flashcard reviewed. Last review date updated.");
+        alert.showAndWait();
+    }
     @FXML
     public void handleBack(ActionEvent event) {
         try {

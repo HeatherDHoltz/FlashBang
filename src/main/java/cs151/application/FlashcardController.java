@@ -16,10 +16,13 @@ public class FlashcardController
 {
     //Dropdown for sleecting a deck
     @FXML private ComboBox<String> deckBox;
+    //Drpdown for status
+    @FXML private ComboBox<FlashcardStatus> statusBox;
     //Text field for the front
-    @FXML private TextField frontField;
+    @FXML private TextArea frontField;
     //Text field for the back
-    @FXML private TextField backField;
+    @FXML private TextArea backField;
+
 
     /**
      * Initializes the controller after the FXML is loaded
@@ -32,6 +35,8 @@ public class FlashcardController
         {
             deckBox.getItems().add(d.getName());
         }
+        statusBox.getItems().addAll(FlashcardStatus.values());
+        statusBox.setValue(FlashcardStatus.NEW);
     }
 
     /**
@@ -44,10 +49,11 @@ public class FlashcardController
     public void handleSave(ActionEvent event)
     {
         String deck = deckBox.getValue();
-        String front = frontField.getText();
-        String back = backField.getText();
+        String front = frontField.getText().trim();
+        String back = backField.getText().trim();
+        FlashcardStatus status = statusBox.getValue();
 
-        if (deck == null || front.isEmpty() || back.isEmpty())
+        if (deck == null || front.isEmpty() || back.isEmpty() || status == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("All fields required");
@@ -55,7 +61,20 @@ public class FlashcardController
             return;
         }
 
+        for (Flashcard card : FlashcardStore.getAllFlashcards())
+        {
+            if (card.getDeckName().equals(deck) &&
+                    card.getFrontText().trim().equalsIgnoreCase(front))
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Front text must be unique within the selected deck.");
+                alert.showAndWait();
+                return;
+            }
+        }
+
         Flashcard card = new Flashcard(deck, front, back);
+        card.setStatus(status);
         FlashcardStore.addFlashcard(card);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

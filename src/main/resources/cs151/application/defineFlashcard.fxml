@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.Button?>
 
 <VBox xmlns="http://javafx.com/javafx"
@@ -20,12 +20,15 @@
         <ComboBox fx:id="deckBox"
                   promptText="Select Deck"
                   prefWidth="250"/>
+        <ComboBox fx:id="statusBox"
+                  promptText="Select Status"
+                  prefWidth="250"/>
 
-        <TextField fx:id="frontField"
+        <TextArea fx:id="frontField"
                    promptText="Front Text"
                    prefWidth="250"/>
 
-        <TextField fx:id="backField"
+        <TextArea fx:id="backField"
                    promptText="Back Text"
                    prefWidth="250"/>
 

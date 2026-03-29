@@ -21,10 +21,12 @@
                 <TableColumn fx:id="frontCol" text="Front"/>
                 <TableColumn fx:id="backCol" text="Back"/>
                 <TableColumn fx:id="dateCol" text="Date"/>
+                <TableColumn fx:id="statusCol" text="Status"/>
+                <TableColumn fx:id="lastReviewCol" text="Last Review Date"/>
             </columns>
 
         </TableView>
-
+        <Button text="Review Flashcard" onAction="#handleReview"/>
         <Button text="Back" onAction="#handleBack"/>
 
     </children>
