@@ -7,12 +7,24 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
+/**
+ * Controller class for the flashcard Creation screen
+ * handles the user input, validation, and saving of flashcards
+ * also handles navigation to the homepage
+ */
 public class FlashcardController
 {
+    //Dropdown for sleecting a deck
     @FXML private ComboBox<String> deckBox;
+    //Text field for the front
     @FXML private TextField frontField;
+    //Text field for the back
     @FXML private TextField backField;
 
+    /**
+     * Initializes the controller after the FXML is loaded
+     * Populates deck dropdown with all available decks
+     */
     @FXML
     public void initialize()
     {
@@ -22,6 +34,12 @@ public class FlashcardController
         }
     }
 
+    /**
+     * Handles the save button click
+     * Validates input fields, cerates a flashcard
+     * stores it and shows confirmation
+     * @param event button click event
+     */
     @FXML
     public void handleSave(ActionEvent event)
     {
@@ -47,12 +65,21 @@ public class FlashcardController
         goHome(event);
     }
 
+    /**
+     * handles teh back button click
+     * Navigates back to the homepage
+     * @param event the button click event
+     */
     @FXML
     public void handleBack(ActionEvent event)
     {
         goHome(event);
     }
 
+    /**
+     * Loads and displays home page
+     * @param event used to retrieve the current stage
+     */
     private void goHome(ActionEvent event)
     {
         try

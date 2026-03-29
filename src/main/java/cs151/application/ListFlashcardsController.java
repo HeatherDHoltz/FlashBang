@@ -9,14 +9,22 @@ import javafx.event.ActionEvent;
 
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Controller for displaying a list of flashcards in a table
+ * Handles table setup, data population, and navigfatrion bar
+ */
 public class ListFlashcardsController {
-
+//Tbale and columns for flashcards
     @FXML private TableView<Flashcard> table;
     @FXML private TableColumn<Flashcard, String> deckCol;
     @FXML private TableColumn<Flashcard, String> frontCol;
     @FXML private TableColumn<Flashcard, String> backCol;
     @FXML private TableColumn<Flashcard, String> dateCol;
 
+    /**
+     * Initializes tbale after FXML is loaded
+     * Sets up column mappings and loads flashcard data into the table
+     */
     @FXML
     public void initialize() {
         deckCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getDeckName()));
@@ -34,6 +42,12 @@ public class ListFlashcardsController {
         table.getItems().addAll(FlashcardStore.getAllFlashcards());
     }
 
+    /**
+     * Handles back button click
+     * brings user back to homepage
+     *
+     * @param event the button click event
+     */
     @FXML
     public void handleBack(ActionEvent event) {
         try {
