@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cs151.application.FlashcardController"
+      spacing="15"
+      alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <children>
+
+        <Label text="Create Flashcard"/>
+
+        <ComboBox fx:id="deckBox"
+                  promptText="Select Deck"
+                  prefWidth="250"/>
+        <ComboBox fx:id="statusBox"
+                  promptText="Select Status"
+                  prefWidth="250"/>
+
+        <TextArea fx:id="frontField"
+                   promptText="Front Text"
+                   prefWidth="250"/>
+
+        <TextArea fx:id="backField"
+                   promptText="Back Text"
+                   prefWidth="250"/>
+
+        <Button text="Save" onAction="#handleSave"/>
+        <Button text="Back" onAction="#handleBack"/>
+
+    </children>
+
+</VBox>

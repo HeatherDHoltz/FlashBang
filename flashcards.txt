@@ -1,0 +1,3 @@
+English||Disillusionment||A feeling of disappointment resulting from the discovery that something is not as good as one believed it to be.||2026-04-01T12:22:49.641406600||MASTERED||
+CS||Abstraction||Hiding complex background details and showing only the essential features of an object.||2026-04-01T12:02:33.497827300||LEARNING||2026-04-01T12:25:11.525121500
+Math||Vector||A mathematical or physical quantity having both magnitude (size or length) and direction||2026-04-01T12:00:59.890203100||NEW||
