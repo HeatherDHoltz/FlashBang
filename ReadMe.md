@@ -1,4 +1,11 @@
 # Name of application: FlashBang
+# Version: 0.6
+
+# who did what:
+1. Heather Holtz-final review, cleanup, final submission
+2. Phuc Vo-Flashcard search,edit,delete implementation
+3. Brian Brooks-Initial review, Read me update
+   
 # Version: 0.5
 
 # who did what:
