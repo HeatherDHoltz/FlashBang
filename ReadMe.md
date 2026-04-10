@@ -4,7 +4,7 @@
 # who did what:
 1. Heather Holtz-final review, cleanup, final submission
 2. Phuc Vo-Flashcard search and delete implementation
-3. Brian Brooks-Initial review, Read me update
+3. Brian Brooks-Initial review, Read me update,UI cleanup
    
 # Version: 0.5
 
