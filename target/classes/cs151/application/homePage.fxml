@@ -38,7 +38,7 @@
                                -fx-font-weight: bold;" />
 
                 <!--Button for view deck-->
-                <Button text="View All Decks"
+                <Button text="View decks"
                         prefWidth="300"
                         prefHeight="60"
                         wrapText="true"
@@ -48,12 +48,25 @@
                                -fx-font-size: 16px;
                                -fx-font-weight: bold;" />
 
-
                 <Button text="Create Flashcard"
-                        onAction="#handleCreateFlashcard"/>
+                        prefWidth="300"
+                        prefHeight="60"
+                        wrapText="true"
+                        onAction="#handleCreateFlashcard"
+                        style="-fx-background-color: #e58a2f;
+                               -fx-text-fill: white;
+                               -fx-font-size: 16px;
+                               -fx-font-weight: bold;" />
 
-                <Button text="View Flashcards"
-                        onAction="#handleViewFlashcards"/>
+                <Button text="View/Search Flashcards"
+                        prefWidth="300"
+                        prefHeight="60"
+                        wrapText="true"
+                        onAction="#handleViewFlashcards"
+                        style="-fx-background-color: #4a90e2;
+                               -fx-text-fill: white;
+                               -fx-font-size: 16px;
+                               -fx-font-weight: bold;" />
 
             </children>
 
