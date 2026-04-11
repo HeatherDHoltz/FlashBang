@@ -6,11 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Handles storing and retrieving flashcards from a text file.
+ * Handles storing and retrieving flashcards from a CSV file.
  */
 public class FlashcardStore {
-    private static final String FILE_NAME = "flashcards.txt";
-    private static final String SEPARATOR = "||";
+    private static final String FILE_NAME = "flashcards.csv";
 
     /**
      * Creates the required sample data for the project if no flashcards exist yet.
@@ -86,17 +85,18 @@ public class FlashcardStore {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\\|\\|", -1);
-                if (parts.length == 6) {
-                    String deck = parts[0];
-                    String front = parts[1].replace("<br>", "\n");
-                    String back = parts[2].replace("<br>", "\n");
-                    LocalDateTime creationDate = LocalDateTime.parse(parts[3]);
-                    FlashcardStatus status = FlashcardStatus.valueOf(parts[4]);
+                List<String> parts = parseCsvLine(line);
+
+                if (parts.size() == 6) {
+                    String deck = parts.get(0);
+                    String front = parts.get(1).replace("<br>", "\n");
+                    String back = parts.get(2).replace("<br>", "\n");
+                    LocalDateTime creationDate = LocalDateTime.parse(parts.get(3));
+                    FlashcardStatus status = FlashcardStatus.valueOf(parts.get(4));
 
                     LocalDateTime lastReviewDate = null;
-                    if (!parts[5].isEmpty()) {
-                        lastReviewDate = LocalDateTime.parse(parts[5]);
+                    if (!parts.get(5).isEmpty()) {
+                        lastReviewDate = LocalDateTime.parse(parts.get(5));
                     }
 
                     list.add(new Flashcard(deck, front, back, creationDate, status, lastReviewDate));
@@ -130,11 +130,45 @@ public class FlashcardStore {
             lastReview = card.getLastReviewDate().toString();
         }
 
-        return card.getDeckName() + SEPARATOR +
-                card.getFrontText().replace("\n", "<br>").replace("\r", "") + SEPARATOR +
-                card.getBackText().replace("\n", "<br>").replace("\r", "") + SEPARATOR +
-                card.getCreationDate() + SEPARATOR +
-                card.getStatus() + SEPARATOR +
-                lastReview;
+        return escapeCsv(card.getDeckName()) + "," +
+                escapeCsv(card.getFrontText().replace("\n", "<br>").replace("\r", "")) + "," +
+                escapeCsv(card.getBackText().replace("\n", "<br>").replace("\r", "")) + "," +
+                escapeCsv(card.getCreationDate().toString()) + "," +
+                escapeCsv(card.getStatus().toString()) + "," +
+                escapeCsv(lastReview);
+    }
+
+    private static String escapeCsv(String value) {
+        if (value == null) {
+            return "\"\"";
+        }
+        return "\"" + value.replace("\"", "\"\"") + "\"";
+    }
+
+    private static List<String> parseCsvLine(String line) {
+        List<String> values = new ArrayList<>();
+        StringBuilder current = new StringBuilder();
+        boolean inQuotes = false;
+
+        for (int i = 0; i < line.length(); i++) {
+            char ch = line.charAt(i);
+
+            if (ch == '"') {
+                if (inQuotes && i + 1 < line.length() && line.charAt(i + 1) == '"') {
+                    current.append('"');
+                    i++;
+                } else {
+                    inQuotes = !inQuotes;
+                }
+            } else if (ch == ',' && !inQuotes) {
+                values.add(current.toString());
+                current.setLength(0);
+            } else {
+                current.append(ch);
+            }
+        }
+
+        values.add(current.toString());
+        return values;
     }
 }
