@@ -15,5 +15,7 @@
         </columns>
     </TableView>
 
+    <Button text="Edit Deck" onAction="#handleEditDeck" />
+    <Button text="Delete Deck" onAction="#handleDeleteDeck" />
     <Button text="Back" onAction="#handleBack" />
 </VBox>

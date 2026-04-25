@@ -171,4 +171,18 @@ public class FlashcardStore {
         values.add(current.toString());
         return values;
     }
+
+    /**
+     * Deletes all flashcards that belong to the given deck.
+     * @param deckName the name of the deck
+     */
+    public static void deleteFlashcardsByDeck(String deckName) {
+        List<Flashcard> flashcards = getAllFlashcards();
+
+        flashcards.removeIf(card ->
+                card.getDeckName().equalsIgnoreCase(deckName.trim())
+        );
+
+        saveAllFlashcards(flashcards);
+    }
 }
