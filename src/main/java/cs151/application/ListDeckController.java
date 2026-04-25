@@ -2,14 +2,11 @@ package cs151.application;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.Alert;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -68,13 +65,22 @@ public class ListDeckController {
             return;
         }
 
-        boolean deleted = DeckStore.deleteDeck(selectedDeck.getName());
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Confirm Delete");
+        confirm.setHeaderText("Delete Deck: " + selectedDeck.getName());
+        confirm.setContentText("WARNING: All flashcards in this deck will also be deleted.\n\nAre you sure?");
 
-        if (deleted) {
-            refreshDeckTable();
-            showAlert("Success", "Deck deleted successfully.");
-        } else {
-            showAlert("Error", "Deck could not be deleted.");
+        Optional<ButtonType> result = confirm.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            boolean deleted = DeckStore.deleteDeck(selectedDeck.getName());
+
+            if (deleted) {
+                refreshDeckTable();
+                showAlert("Success", "Deck deleted successfully.");
+            } else {
+                showAlert("Error", "Deck could not be deleted.");
+            }
         }
     }
 
@@ -142,6 +148,16 @@ public class ListDeckController {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         desCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         refreshDeckTable();
+
+        deckTable.setRowFactory(tv -> {
+            TableRow<Deck> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    handleEditDeck();
+                }
+            });
+            return row;
+        });
     }
 
     /**
