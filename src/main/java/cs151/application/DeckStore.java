@@ -122,6 +122,17 @@ public class DeckStore
 
         return decks;
     }
+    public static List<String> getAllDeckNames()
+    {
+        List<String> names = new ArrayList<>();
+
+        for (Deck deck : getAllDecks())
+        {
+            names.add(deck.getName());
+        }
+
+        return names;
+    }
 
 
 }

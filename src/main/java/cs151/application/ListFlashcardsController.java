@@ -47,6 +47,17 @@ public class ListFlashcardsController
         filteredFlashcards.setAll(allFlashcards);
         table.setItems(filteredFlashcards);
 
+        table.setRowFactory(tv -> {
+            TableRow<Flashcard> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    Flashcard selectedCard = row.getItem();
+                    openEditFlashcardPage(selectedCard);
+                }
+            });
+            return row;
+        });
+
         searchField.textProperty().addListener((observable, oldValue, newValue) -> applySearch());
     }
 
@@ -179,6 +190,26 @@ public class ListFlashcardsController
             stage.setScene(new Scene(root, 700, 400));
             stage.show();
         } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void openEditFlashcardPage(Flashcard selectedCard)
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cs151/application/editFlashcard.fxml"));
+            Parent root = loader.load();
+
+            EditFlashcardController controller = loader.getController();
+            controller.setFlashcard(selectedCard);
+
+            Stage stage = (Stage) table.getScene().getWindow();
+            stage.setScene(new Scene(root, 700, 400));
+            stage.show();
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
         }

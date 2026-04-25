@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e55a19f8-a57a-4e79-a8c5-60aa66e93315" name="Changes" comment="UI cleanup">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cs151/application/EditFlashcardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cs151/application/editFlashcard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flashcards.csv" beforeDir="false" afterPath="$PROJECT_DIR$/flashcards.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cs151/application/DeckStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs151/application/DeckStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cs151/application/Flashcard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs151/application/Flashcard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cs151/application/ListFlashcardsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cs151/application/ListFlashcardsController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;BrianWB4623&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/HeatherDHoltz/FlashBang&quot;,
+    &quot;accountId&quot;: &quot;944f7b09-b316-4842-bd21-efe2598b2f89&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="3AxjMqJCAPHWMkjqDVaf7iwaqL7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Brian/IdeaProjects/FlashBang",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Brian\IdeaProjects\FlashBang\src\main\resources\cs151\application" />
+      <recent name="C:\Users\Brian\IdeaProjects\FlashBang\src\main\resources\images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="FlashBang" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="FlashBang" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e55a19f8-a57a-4e79-a8c5-60aa66e93315" name="Changes" comment="" />
+      <created>1773541070548</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1773541070548</updated>
+      <workItem from="1773541071838" duration="8049000" />
+      <workItem from="1773696313145" duration="11464000" />
+      <workItem from="1774743431040" duration="3859000" />
+      <workItem from="1774763741216" duration="1957000" />
+      <workItem from="1774766865003" duration="412000" />
+      <workItem from="1774767290767" duration="251000" />
+      <workItem from="1774767551639" duration="149000" />
+      <workItem from="1774767821134" duration="22000" />
+      <workItem from="1775749893761" duration="138000" />
+      <workItem from="1775750049204" duration="29000" />
+      <workItem from="1775750091601" duration="825000" />
+      <workItem from="1775751588096" duration="147000" />
+      <workItem from="1775751748382" duration="4000" />
+      <workItem from="1775751760308" duration="12000" />
+      <workItem from="1775751804543" duration="5433000" />
+      <workItem from="1777100009323" duration="668000" />
+      <workItem from="1777143123023" duration="2144000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Homepage Ui, with logo and create deck button">
+      <option name="closed" value="true" />
+      <created>1773544267377</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1773544267377</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added some javadoc comments">
+      <option name="closed" value="true" />
+      <created>1774756549501</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774756549501</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Dropdown menu for learning status,All data log fix, Front text unique check, Text area fix">
+      <option name="closed" value="true" />
+      <created>1774765012949</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1774765012949</updated>
+    </task>
+    <task id="LOCAL-00004" summary="UI cleanup">
+      <option name="closed" value="true" />
+      <created>1775838460244</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775838460244</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Homepage Ui, with logo and create deck button" />
+    <MESSAGE value="Added some javadoc comments" />
+    <MESSAGE value="Dropdown menu for learning status,All data log fix, Front text unique check, Text area fix" />
+    <MESSAGE value="UI cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI cleanup" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FlashBang$Main.ic" NAME="Main Coverage Results" MODIFIED="1774767539567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>cs151.application.*</FILTER>
+    </SUITE>
+  </component>
+</project>

@@ -114,4 +114,25 @@ public class Flashcard
     {
         this.lastReviewDate = lastReviewDate;
     }
+
+    /**
+     * Setter method for front text
+     * @param frontText the new front text
+     */
+    public void setFrontText(String frontText)
+    {
+        this.frontText = frontText;
+    }
+
+    /**
+     * Setter method for back text
+     * @param backText the new back text
+     */
+    public void setBackText(String backText)
+    {
+        this.backText = backText;
+    }
+    public void setDeckName(String deckName) {
+        this.deckName = deckName;
+    }
 }
