@@ -1,3 +1,11 @@
+<<<<<<< HEAD
 "English","What is the powerhouse of the cell?","Mitochondriac","2026-04-09T19:13:18.562858","MASTERED","2026-04-10T07:13:18.562858"
 "Spanish Vocabulary","Hola","Hello","2026-04-08T19:13:18.562858","LEARNING","2026-04-09T19:13:18.562858"
 "CS151 - Design Patterns","What does MVC stand for?","Model View Controller","2026-04-07T19:13:18.550790200","NEW",""
+=======
+"Math","Eigen Vector","A nonzero vector whose direction remains unchanged (or is exactly reversed) when a linear transformation (matrix multiplication) is applied to it","2026-04-25T11:58:11.828228","NEW",""
+"English","Etheral","Something light, airy, delicate, or heavenly, often appearing too perfect for this world","2026-04-25T11:57:19.254260400","NEW",""
+"Math","Matrix","A set of numbers arranged in rows and columns so as to form a rectangular array.","2026-04-25T11:53:18.243065100","NEW",""
+"English","Oxymoron","A figure of speech combining two contradictory or opposite words","2026-04-25T11:46:40.388755700","NEW",""
+"CS 151","SOLID","Five object-oriented design guidelines that make software more understandable, flexible, and maintainable","2026-04-25T12:01:10.502556200","NEW",""
+>>>>>>> f9b3bec16ecf431063a6e8b7c6454eeb47786e16
