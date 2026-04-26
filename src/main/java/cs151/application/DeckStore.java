@@ -182,21 +182,31 @@ public class DeckStore {
      */
     public static boolean editDeck(String oldName, String newName, String newDescription) {
         List<Deck> decks = getAllDecks();
-
+    
         for (Deck deck : decks) {
             if (deck.getName().equalsIgnoreCase(oldName.trim())) {
-
+    
                 if (!oldName.trim().equalsIgnoreCase(newName.trim()) && !isUnique(newName)) {
                     return false;
                 }
-
+    
+                // Fix 1: Update associated flashcards if the name changed
+                if (!oldName.trim().equalsIgnoreCase(newName.trim())) {
+                    List<Flashcard> allCards = FlashcardStore.getAllFlashcards();
+                    for (Flashcard card : allCards) {
+                        if (card.getDeckName().equalsIgnoreCase(oldName.trim())) {
+                            card.setDeckName(newName.trim());
+                        }
+                    }
+                    FlashcardStore.saveAllFlashcards(allCards);
+                }
+    
                 deck.setName(newName.trim());
                 deck.setDescription(newDescription == null ? "" : newDescription.trim());
                 saveAllDecks(decks);
                 return true;
             }
         }
-
         return false;
     }
 }
