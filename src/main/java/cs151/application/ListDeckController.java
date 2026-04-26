@@ -90,51 +90,57 @@ public class ListDeckController {
     @FXML
     public void handleEditDeck() {
         Deck selectedDeck = deckTable.getSelectionModel().getSelectedItem();
-
+    
         if (selectedDeck == null) {
             showAlert("No deck selected", "Please select a deck to edit.");
             return;
         }
-
-        TextInputDialog nameDialog = new TextInputDialog(selectedDeck.getName());
-        nameDialog.setTitle("Edit Deck");
-        nameDialog.setHeaderText("Edit Deck Name");
-        nameDialog.setContentText("New deck name:");
-
-        Optional<String> nameResult = nameDialog.showAndWait();
-        if (nameResult.isEmpty()) {
-            return;
-        }
-
-        String newName = nameResult.get().trim();
-        if (newName.isEmpty()) {
-            showAlert("Invalid Name", "Deck name cannot be empty.");
-            return;
-        }
-
-        TextInputDialog descriptionDialog = new TextInputDialog(selectedDeck.getDescription());
-        descriptionDialog.setTitle("Edit Deck");
-        descriptionDialog.setHeaderText("Edit Deck Description");
-        descriptionDialog.setContentText("New description:");
-
-        Optional<String> descriptionResult = descriptionDialog.showAndWait();
-        if (descriptionResult.isEmpty()) {
-            return;
-        }
-
-        String newDescription = descriptionResult.get().trim();
-
-        boolean updated = DeckStore.editDeck(
-                selectedDeck.getName(),
-                newName,
-                newDescription
-        );
-
-        if (updated) {
-            refreshDeckTable();
-            showAlert("Success", "Deck updated successfully.");
-        } else {
-            showAlert("Error", "Deck could not be updated. Name may already exist.");
+    
+        // Create a custom dialog
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Edit Deck");
+        dialog.setHeaderText("Update Deck Details");
+    
+        // Set the button types
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+    
+        // Create fields and layout
+        TextField nameField = new TextField(selectedDeck.getName());
+        nameField.setPromptText("Deck Name");
+        TextArea descArea = new TextArea(selectedDeck.getDescription());
+        descArea.setPromptText("Description");
+        descArea.setPrefRowCount(3);
+    
+        javafx.scene.layout.VBox content = new javafx.scene.layout.VBox(10);
+        content.getChildren().addAll(new Label("Name:"), nameField, new Label("Description:"), descArea);
+        dialog.getDialogPane().setContent(content);
+    
+        // Request focus on the name field by default
+        javafx.application.Platform.runLater(nameField::requestFocus);
+    
+        Optional<ButtonType> result = dialog.showAndWait();
+    
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            String newName = nameField.getText().trim();
+            String newDescription = descArea.getText().trim();
+    
+            if (newName.isEmpty()) {
+                showAlert("Invalid Name", "Deck name cannot be empty.");
+                return;
+            }
+    
+            boolean updated = DeckStore.editDeck(
+                    selectedDeck.getName(),
+                    newName,
+                    newDescription
+            );
+    
+            if (updated) {
+                refreshDeckTable();
+                showAlert("Success", "Deck updated successfully.");
+            } else {
+                showAlert("Error", "Deck could not be updated. Name may already exist.");
+            }
         }
     }
 
