@@ -1,4 +1,11 @@
 # Name of application: FlashBang
+# Version: 0.8
+
+# who did what:
+1. Heather Holtz-final review, cleanup, final submission
+2. Phuc Vo-Deck Review implementation
+3. Brian Brooks-ReadMe,Initial Review, Deck data edit
+   
 # Version: 0.7
 
 # who did what:
