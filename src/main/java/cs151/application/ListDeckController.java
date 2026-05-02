@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 import java.util.Collections;
@@ -25,39 +24,27 @@ import java.util.Optional;
  */
 public class ListDeckController {
 
-    // Table that displays all decks
     @FXML
     private TableView<Deck> deckTable;
 
-    // Column for deck names
     @FXML
     private TableColumn<Deck, String> nameColumn;
 
-    // Column for deck description
     @FXML
     private TableColumn<Deck, String> desCol;
 
-    /**
-     * Navigates back to home page
-     * @param event home button clicked
-     */
     @FXML
     public void handleBack(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/cs151/application/homePage.fxml"));
-
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root, 700, 400));
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Deletes the selected deck from the table and csv file
-     */
     @FXML
     public void handleDeleteDeck() {
         Deck selectedDeck = deckTable.getSelectionModel().getSelectedItem();
@@ -90,13 +77,11 @@ public class ListDeckController {
     public void initialize() {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        // This forces the column to only receive the first line of the description
         desCol.setCellValueFactory(cellData -> {
             String fullDesc = cellData.getValue().getDescription();
             if (fullDesc == null || fullDesc.isEmpty()) {
                 return new javafx.beans.property.SimpleStringProperty("");
             }
-            // Split by newline and take the first part only. No ellipses added.
             String firstLine = fullDesc.split("\n")[0];
             return new javafx.beans.property.SimpleStringProperty(firstLine);
         });
@@ -107,16 +92,12 @@ public class ListDeckController {
             TableRow<Deck> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && !row.isEmpty()) {
-                    handleEditDeck();
+                    openDeckReviewPage(row.getItem());
                 }
             });
             return row;
         });
     }
-
-    /**
-     * Edits the selected deck's name and description
-     */
 
     @FXML
     public void handleEditDeck() {
@@ -137,7 +118,12 @@ public class ListDeckController {
         descArea.setPrefRowCount(3);
 
         VBox content = new VBox(10);
-        content.getChildren().addAll(new Label("Name:"), nameField, new Label("Description:"), descArea);
+        content.getChildren().addAll(
+                new Label("Name:"),
+                nameField,
+                new Label("Description:"),
+                descArea
+        );
         dialog.getDialogPane().setContent(content);
 
         javafx.application.Platform.runLater(nameField::requestFocus);
@@ -162,9 +148,23 @@ public class ListDeckController {
         }
     }
 
-    /**
-     * Reloads the deck table from storage
-     */
+    private void openDeckReviewPage(Deck deck) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cs151/application/reviewDeck.fxml"));
+            Parent root = loader.load();
+
+            ReviewDeckController controller = loader.getController();
+            controller.setDeck(deck);
+
+            Stage stage = (Stage) deckTable.getScene().getWindow();
+            stage.setScene(new Scene(root, 700, 400));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Navigation Error", "Could not open the deck review page.");
+        }
+    }
+
     private void refreshDeckTable() {
         List<Deck> decks = DeckStore.getAllDecks();
 
@@ -178,11 +178,6 @@ public class ListDeckController {
         deckTable.setItems(FXCollections.observableArrayList(decks));
     }
 
-    /**
-     * Shows an alert message
-     * @param title alert title
-     * @param message alert message
-     */
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

@@ -68,6 +68,17 @@
                                -fx-font-size: 16px;
                                -fx-font-weight: bold;" />
 
+
+                <Button text="Review Flashcards"
+                        onAction="#handleReview"
+                        prefWidth="260"
+                        prefHeight="55"
+                        style="-fx-background-color: #F28C28;
+               -fx-text-fill: white;
+               -fx-font-size: 16px;
+               -fx-font-weight: bold;
+               -fx-background-radius: 5;" />
+
             </children>
 
         </VBox>

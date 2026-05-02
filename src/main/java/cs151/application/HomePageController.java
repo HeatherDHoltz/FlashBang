@@ -43,4 +43,8 @@ public class HomePageController
             e.printStackTrace();
         }
     }
+
+    public void handleReview(ActionEvent event) {
+        switchScene(event, "/cs151/application/reviewPage.fxml");
+    }
 }
