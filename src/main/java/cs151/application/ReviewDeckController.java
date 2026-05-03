@@ -84,21 +84,29 @@ public class ReviewDeckController {
 
         Flashcard card = filteredCards.get(currentIndex);
 
+        // Automatically update last reviewed date when card is viewed
+        card.setLastReviewDate(LocalDateTime.now());
+
+        List<Flashcard> allCards = FlashcardStore.getAllFlashcards();
+
+        for (int i = 0; i < allCards.size(); i++) {
+            if (allCards.get(i).getCreationDate().equals(card.getCreationDate())) {
+                allCards.set(i, card);
+                break;
+            }
+        }
+
+        FlashcardStore.saveAllFlashcards(allCards);
+
         frontArea.setText(card.getFrontText());
         backArea.setText(card.getBackText());
         statusBox.setValue(card.getStatus());
         creationDateLabel.setText(card.getCreationDate().toString());
-
-        if (card.getLastReviewDate() == null) {
-            lastReviewLabel.setText(LocalDateTime.now().toString());
-        } else {
-            lastReviewLabel.setText(card.getLastReviewDate().toString());
-        }
+        lastReviewLabel.setText(card.getLastReviewDate().toString());
 
         prevButton.setDisable(currentIndex == 0);
         nextButton.setDisable(currentIndex == filteredCards.size() - 1);
     }
-
     @FXML
     public void handlePrevious() {
         if (currentIndex > 0) {
